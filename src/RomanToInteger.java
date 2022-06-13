@@ -26,10 +26,10 @@ public class RomanToInteger {
         System.out.println(romanToInteger("MCMXCIV"));
     }
     public static int romanToInteger(String s) {
-        int sum = 0;
+        int sum = 0;    // set placeholder variable to be used to indicate values of each roman numeral in string
 
-        for (int i = 0; i < s.length(); i++) {
-            switch (s.charAt(i)) {
+        for (int i = 0; i < s.length(); i++) {  // loop through numerals in the input string
+            switch (s.charAt(i)) {  // use of switch statements to set roman numeral values, which add onto the sum
                 case 'M':
                     sum += 1000;
                     break;
@@ -54,14 +54,15 @@ public class RomanToInteger {
             }
 
         }
+        // need to account for specific roman numeral cases that don't follow the norm:
         if (s.contains("IV") || s.contains("IX")) {
-            sum -= 2;
+            sum -= 2;   // previous sum methods would have these as 6 and 11, so we subtract 2
         }
         if (s.contains("XL") || s.contains("XC")) {
-            sum -= 20;
+            sum -= 20; // previous sum methods would have these as 60 and 110, so we subtract 20
         }
         if (s.contains("CD") || s.contains("CM")) {
-            sum -= 200;
+            sum -= 200; // previous sum methods would have these as 600 and 1100, so we subtract 200
         }
         return sum;
     }
